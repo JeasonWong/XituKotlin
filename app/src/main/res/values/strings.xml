@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">XituKotlin</string>
+
+    <string name="xitu_api_release">https://api.leancloud.cn/1.1/</string>
+</resources>
