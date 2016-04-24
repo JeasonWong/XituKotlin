@@ -10,7 +10,7 @@ import java.util.List;
 import me.wangyuwei.xitukotlin.entity.ResultsEntity;
 
 /**
- * 作者： 巴掌 on 16/4/22 18:17
+ * 作者： 巴掌 on 16/4/24 21:25
  */
 public class HotAdapter extends RecyclerView.Adapter {
 
