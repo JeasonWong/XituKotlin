@@ -5,11 +5,13 @@ package me.wangyuwei.xitukotlin.entity
  */
 class ResultsEntity(
         var updatedAt: String,
+        var url: String?,
         var viewsCount: Int,
         var collectionCount: Int,
         var createdAt: String,
         var type: String,
         var title: String,
         var user: UserEntity,
-        var screenshot: ScreenshotEntity?
+        var screenshot: ScreenshotEntity?,
+        var originalUrl: String?
 )
