@@ -2,7 +2,7 @@ package me.wangyuwei.xitukotlin.mvp.presenter;
 
 import android.util.Log;
 
-import me.wangyuwei.xitukotlin.entity.HotList;
+import me.wangyuwei.xitukotlin.entity.HotListEntity;
 import me.wangyuwei.xitukotlin.mvp.views.MainView;
 import me.wangyuwei.xitukotlin.rest.ApiUtil;
 import me.wangyuwei.xitukotlin.rest.XituApi;
@@ -24,12 +24,12 @@ public class MainPresenter {
     }
 
     public void loadData(){
-        xituApi.getHotList()
+        xituApi.getHotList("user,user.installation", "-rankIndex", 30)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<HotList>() {
+                .subscribe(new Action1<HotListEntity>() {
                     @Override
-                    public void call(HotList hotList) {
+                    public void call(HotListEntity hotList) {
                         mainView.showHotList(hotList);
                     }
                 }, new Action1<Throwable>() {

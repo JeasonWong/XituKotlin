@@ -35,7 +35,7 @@ dependencies {
     compile "org.jetbrains.anko:anko-support-v4:$parent.ext.ankoVersion" // In case you need support-v4 bindings
     compile "org.jetbrains.anko:anko-appcompat-v7:$parent.ext.ankoVersion" // For appcompat-v7 bindings
 
-    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.android.support:recyclerview-v7:23.2.1'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.squareup.retrofit2:retrofit:2.0.0'

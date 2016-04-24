@@ -9,7 +9,7 @@ import me.wangyuwei.xitukotlin.AppContext;
 import me.wangyuwei.xitukotlin.R;
 
 /**
- * 作者： 巴掌 on 16/4/23 23:17
+ * 作者： 巴掌 on 16/4/24 13:18
  */
 public class ApiUtil {
 

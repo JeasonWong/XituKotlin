@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import me.wangyuwei.xitukotlin.R;
-import me.wangyuwei.xitukotlin.entity.HotList;
+import me.wangyuwei.xitukotlin.entity.HotListEntity;
 import me.wangyuwei.xitukotlin.mvp.presenter.MainPresenter;
 import me.wangyuwei.xitukotlin.mvp.views.MainView;
 import me.wangyuwei.xitukotlin.ui.hot.HotAdapter;
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements MainView{
     }
 
     @Override
-    public void showHotList(HotList hotList) {
+    public void showHotList(HotListEntity hotList) {
         mHotAdapter.setData(hotList.getResults());
     }
 }

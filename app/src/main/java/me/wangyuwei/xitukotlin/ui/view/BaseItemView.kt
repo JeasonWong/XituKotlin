@@ -8,7 +8,7 @@ import android.view.ViewGroup
 /**
  * 作者： 巴掌 on 16/4/23 20:30
  */
-abstract class BaseItemView<T>{
+abstract class BaseItemView<T> : View.OnClickListener{
 
     val view: View
     val mContext: Context
@@ -16,6 +16,7 @@ abstract class BaseItemView<T>{
     constructor(context: Context, root: ViewGroup? = null) {
         mContext = context
         view = LayoutInflater.from(context).inflate(layoutResource, root, false)
+        view.setOnClickListener(this)
     }
 
     protected abstract val layoutResource: Int
