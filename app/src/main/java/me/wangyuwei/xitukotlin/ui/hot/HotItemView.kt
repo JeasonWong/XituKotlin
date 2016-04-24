@@ -9,6 +9,7 @@ import me.wangyuwei.xitukotlin.entity.HotListEntity
 import me.wangyuwei.xitukotlin.entity.ResultsEntity
 import me.wangyuwei.xitukotlin.entity.ScreenshotEntity
 import me.wangyuwei.xitukotlin.ui.view.BaseItemView
+import me.wangyuwei.xitukotlin.utils.getCommentTime
 import me.wangyuwei.xitukotlin.utils.loadImage
 import org.jetbrains.anko.find
 
@@ -32,7 +33,8 @@ class HotItemView<T>(context: Context) : BaseItemView<T>(context) {
             loadImage(R.mipmap.user_article_no_data, iv_cover)
         }
         tv_title.setText(hotEntity.title)
-        tv_username.setText(hotEntity.user.username)
+//        tv_username.setText(hotEntity.user.username)
+        tv_username.setText(getCommentTime(hotEntity.createdAt))
         return this
     }
 
