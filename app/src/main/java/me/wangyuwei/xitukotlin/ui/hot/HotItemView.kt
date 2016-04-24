@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import me.wangyuwei.xitukotlin.R
-import me.wangyuwei.xitukotlin.entity.HotListEntity
 import me.wangyuwei.xitukotlin.entity.ResultsEntity
 import me.wangyuwei.xitukotlin.entity.ScreenshotEntity
 import me.wangyuwei.xitukotlin.ui.view.BaseItemView
@@ -21,6 +20,9 @@ class HotItemView<T>(context: Context) : BaseItemView<T>(context) {
     val iv_cover: ImageView by lazy { view.find<ImageView>(R.id.iv_cover) }
     val tv_title: TextView by lazy { view.find<TextView>(R.id.tv_title) }
     val tv_username: TextView by lazy { view.find<TextView>(R.id.tv_username) }
+    val tv_create_time: TextView by lazy { view.find<TextView>(R.id.tv_create_time) }
+    val tv_view: TextView by lazy { view.find<TextView>(R.id.tv_view) }
+    val tv_collection: TextView by lazy { view.find<TextView>(R.id.tv_collection) }
 
     override val layoutResource: Int
         get() = R.layout.rv_item_hot
@@ -32,9 +34,11 @@ class HotItemView<T>(context: Context) : BaseItemView<T>(context) {
         }else{
             loadImage(R.mipmap.user_article_no_data, iv_cover)
         }
-        tv_title.setText(hotEntity.title)
-//        tv_username.setText(hotEntity.user.username)
-        tv_username.setText(getCommentTime(hotEntity.createdAt))
+        tv_title.text = hotEntity.title
+        tv_username.text = hotEntity.user.username
+        tv_create_time.text = getCommentTime(hotEntity.createdAt)
+        tv_view.text = hotEntity.viewsCount.toString()
+        tv_collection.text = hotEntity.collectionCount.toString()
         return this
     }
 
