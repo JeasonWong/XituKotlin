@@ -26,8 +26,6 @@ class MainActivity : AppCompatActivity(), MainView{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        mainPresenter = MainPresenter(this)
-
         mHotAdapter = HotAdapter(this)
         rv_hot.adapter = mHotAdapter
         val layoutManager: LinearLayoutManager = LinearLayoutManager(this)
@@ -38,6 +36,7 @@ class MainActivity : AppCompatActivity(), MainView{
             }
         });
 
+        mainPresenter = MainPresenter(this)
         mainPresenter.loadData()
     }
 
