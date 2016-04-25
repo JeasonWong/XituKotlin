@@ -11,6 +11,6 @@ import rx.Observable
 interface XituApi {
 
     @GET("classes/Entry")
-    fun getHotList(@Query("include") include: String, @Query("order") order: String, @Query("limit") limit: Int): Observable<HotListEntity>
+    fun getHotList(@Query("include") include: String, @Query("order") order: String, @Query("limit") limit: Int, @Query("skip") skip: Int): Observable<HotListEntity>
 
 }

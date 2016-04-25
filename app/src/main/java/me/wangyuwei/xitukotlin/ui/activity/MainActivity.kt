@@ -10,12 +10,13 @@ import me.wangyuwei.xitukotlin.entity.HotListEntity
 import me.wangyuwei.xitukotlin.mvp.presenter.MainPresenter
 import me.wangyuwei.xitukotlin.mvp.views.MainView
 import me.wangyuwei.xitukotlin.ui.hot.HotAdapter
+import me.wangyuwei.xitukotlin.widget.EndlessRecyclerOnScrollListener
 import org.jetbrains.anko.find
 
 /**
  * 作者： 巴掌 on 16/4/22 18:09
  */
-class MainActivity : AppCompatActivity(), MainView {
+class MainActivity : AppCompatActivity(), MainView{
 
     private val rv_hot: RecyclerView by lazy { find<RecyclerView>(R.id.rv_hot) }
     private lateinit var mHotAdapter: HotAdapter
@@ -25,15 +26,26 @@ class MainActivity : AppCompatActivity(), MainView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        mainPresenter = MainPresenter(this)
+
         mHotAdapter = HotAdapter(this)
         rv_hot.adapter = mHotAdapter
-        rv_hot.layoutManager = LinearLayoutManager(this)
+        val layoutManager: LinearLayoutManager = LinearLayoutManager(this)
+        rv_hot.layoutManager = layoutManager
+        rv_hot.addOnScrollListener(object : EndlessRecyclerOnScrollListener(layoutManager){
+            override fun onLoadMore(currentPage: Int) {
+                mainPresenter.loadMoreData(currentPage)
+            }
+        });
 
-        mainPresenter = MainPresenter(this)
         mainPresenter.loadData()
     }
 
     override fun showHotList(hotList: HotListEntity) {
         mHotAdapter.setData(hotList.results)
+    }
+
+    override fun addHotListData(hotList: HotListEntity) {
+        mHotAdapter.addData(hotList.results)
     }
 }

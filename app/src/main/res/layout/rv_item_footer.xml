@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v4.widget.ContentLoadingProgressBar
+        android:id="@+id/loading_more_progress"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_centerInParent="true" />
+
+    <TextView
+        android:id="@+id/loading_more_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="出问题了"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/loading_more_retry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/loading_more_tips"
+        android:layout_centerHorizontal="true"
+        android:text="重试"
+        android:visibility="gone" />
+
+</RelativeLayout>

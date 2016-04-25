@@ -15,6 +15,8 @@ import rx.schedulers.Schedulers;
  */
 public class MainPresenter {
 
+    private final int LIMIT = 30;
+
     private MainView mainView;
     private XituApi xituApi;
 
@@ -23,14 +25,32 @@ public class MainPresenter {
         xituApi = ApiUtil.createApi(XituApi.class);
     }
 
-    public void loadData(){
-        xituApi.getHotList("user,user.installation", "-rankIndex", 30)
+    public void loadData() {
+        xituApi.getHotList("user,user.installation", "-rankIndex", LIMIT, 0)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<HotListEntity>() {
                     @Override
                     public void call(HotListEntity hotList) {
                         mainView.showHotList(hotList);
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        Log.e("@=>e", throwable.getMessage());
+                    }
+                });
+    }
+
+    public void loadMoreData(int currentPage) {
+        Log.d("@=>loadMoreData", "loadMoreData => page=> " + currentPage);
+        xituApi.getHotList("user,user.installation", "-rankIndex", LIMIT, currentPage * LIMIT)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<HotListEntity>() {
+                    @Override
+                    public void call(HotListEntity hotList) {
+                        mainView.addHotListData(hotList);
                     }
                 }, new Action1<Throwable>() {
                     @Override
