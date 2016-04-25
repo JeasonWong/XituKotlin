@@ -7,5 +7,5 @@ import com.ocpsoft.pretty.time.PrettyTime
  */
 
 fun getCommentTime(createAt: String): String {
-    return PrettyTime().format(AVUtils.dateFromString(createAt))
+    return PrettyTime().format(dateFromString(createAt))
 }
